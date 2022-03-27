@@ -7,7 +7,7 @@ export const AdminSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    unique: true,
+    unique: [true, 'Email already exists'],
     required: [true, 'Email is required'],
   },
   password: {
