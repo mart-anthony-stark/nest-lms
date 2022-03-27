@@ -10,6 +10,10 @@ export class AdminService {
   ) {}
 
   async registerAdmin(body: Admin): Promise<Admin> {
-    return await new this.adminModel(body).save();
+    try {
+      return await new this.adminModel(body).save();
+    } catch (error) {
+      return error;
+    }
   }
 }
