@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Admin } from './interfaces/admin.interface';
@@ -13,7 +13,7 @@ export class AdminService {
     try {
       return await new this.adminModel(body).save();
     } catch (error) {
-      return error;
+      throw new HttpException(error, HttpStatus.BAD_REQUEST);
     }
   }
 }
