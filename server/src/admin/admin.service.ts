@@ -9,7 +9,7 @@ export class AdminService {
     @InjectModel('Admin') private readonly adminModel: Model<Admin>,
   ) {}
 
-  async registerAdmin(body: Admin): Promise<Admin> {
+  async registerAdmin(body: Admin) {
     try {
       return await new this.adminModel(body).save();
     } catch (error) {
